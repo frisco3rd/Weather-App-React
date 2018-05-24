@@ -8,6 +8,7 @@ const API_KEY = "f879356f52a3f6dcf8295811ee1eb492";
 
 //creats instance of APP and extends to react.Component
 class App extends React.Component{
+
 state = {
   temperature: undefined,
   city: undefined,
@@ -29,27 +30,34 @@ getWeather = async (e) => { // arrow function
   //converting API call to JSON format then assanising  to data
   console.log(data);
   // Sets data that will be passed to state//
-  this.setState =({
-    temperature:data.main.temp,
-    city:data.name,
-    country:data.sys.country,
-    humidity:data.main.humidity,
-    description:data.weather[0].description,
-    error:""
+
+  this.setState ({
+    temperature: data.main.temp,
+    city: data.name,
+    country: data.sys.country,
+    humidity: data.main.humidity,
+    description: data.weather[0].description,
+    error: ""
   });
 }
 
-  render(){
+ render(){
     return(
       <div>
       <Titles />
       <Form getWeather={this.getWeather} />
-        {/*Set up prop called getWeather & value is getWeather function*/}
-
-      <Weather />
+      <Weather
+        temperature={this.state.temperature}
+        city={this.state.city}
+        country={this.state.country}
+        humidity={this.state.humidity}
+        description={this.state.description}
+        error={this.state.error}
+        />
       </div>
     );
   }
 }
+{/*Set up prop called getWeather & value is getWeather function*/}
 
 export default App;
