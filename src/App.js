@@ -14,7 +14,7 @@ state = {
   city: undefined,
   country: undefined,
   humidity: undefined,
-  description: undefined,
+  main:undefined,
   error: undefined
 }
 
@@ -33,11 +33,11 @@ getWeather = async (e) => { // arrow function
 
     if (city && country ) {
     this.setState ({
-    temperature: data.main.temp,
+    temperature: data.main.temp* 9 / 5 + 32,
     city: data.name,
     country: data.sys.country,
     humidity: data.main.humidity,
-    description: data.weather[0].description,
+    main: data.weather[0].main,
     error:""
    });
   } else {
@@ -46,7 +46,7 @@ getWeather = async (e) => { // arrow function
       city: undefined,
       country: undefined,
       humidity: undefined,
-      description: undefined,
+      main:undefined,
       error: "Please enter the values."
     });
   }
@@ -69,7 +69,7 @@ render() {
                   humidity={this.state.humidity}
                   city={this.state.city}
                   country={this.state.country}
-                  description={this.state.description}
+                  main={this.state.main}
                   error={this.state.error}
                 />
               </div>
