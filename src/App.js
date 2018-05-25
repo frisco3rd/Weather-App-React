@@ -28,17 +28,28 @@ getWeather = async (e) => { // arrow function
   //makes api call....Need tou use AWAT followed by FETCH
   const data = await api_call.json();
   //converting API call to JSON format then assanising  to data
-  console.log(data);
-  // Sets data that will be passed to state//
+    // Sets data that will be passed to state//
+  // if city is true and country is true then run
 
-  this.setState ({
+    if (city && country ) {
+    this.setState ({
     temperature: data.main.temp,
     city: data.name,
     country: data.sys.country,
     humidity: data.main.humidity,
     description: data.weather[0].description,
-    error: ""
-  });
+    error:""
+   });
+  } else {
+    this.setState({
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: "Please enter the values."
+    });
+  }
 }
 
  render(){

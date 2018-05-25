@@ -1,19 +1,16 @@
 //Always do first
 import React from "react";
-
-class Weather extends React.Component{
-  render(){
-    return(
+//stateless function componenet
+// if one argument you do not need () 
+const Weather = props => (
       <div>
-      <p>Location: {this.props.city}, {this.props.country}</p>
-        <p>Temprature: {this.props.temperature}</p>
-        <p>Humidity: {this.props.humidity}</p>
-        <p>Conditions: {this.props.description}</p>
-
+      {/*use && as a operational conditinal/// IF BLACK true(&&) render*/}
+        { props.city && props.country &&  <p>Location: { props.city}, { props.country }</p>}
+        { props.temperature && <p>Temprature: { props.temperature }</p>}
+        { props.humidity && <p>Humidity: { props.humidity }</p>}
+        { props.description && <p>Conditions: { props.description }</p>}
+        { props.error && <p> { props.error } </p>}
       </div>
-    );
-  }
-}
-
+);
 export default Weather;
 //Exports current component file
