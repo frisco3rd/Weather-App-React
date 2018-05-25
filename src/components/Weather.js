@@ -6,17 +6,19 @@ const Weather = props => (
     <div className="weather__info">
      {	
        props.city && props.country && <p className="weather__key"> Location: 
-         <span className="weather__value"> { props.city }, { props.country }</span>
+         <span className="weather__value"> { props.city }, { props.country } <i class="fas fa-location-arrow"></i>
+
+         </span>
        </p> 
      }
      { 	
        props.temperature && <p className="weather__key"> Temperature: 
-         <span className="weather__value"> { props.temperature }	</span>
+         <span className="weather__value"> { props.temperature }&#176;</span>
        </p> 
      }
      { 	
        props.humidity && <p className="weather__key"> Humidity: 
-         <span className="weather__value"> { props.humidity } %</span>
+         <span className="weather__value"> { props.humidity }%</span>
        </p> 
      }
   
